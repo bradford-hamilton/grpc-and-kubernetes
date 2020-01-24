@@ -1,0 +1,23 @@
+---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: grpc-and-kubernetes
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        name: grpc-and-kubernetes
+    template:
+      metadata:
+        labels:
+          name: grpc-and-kubernetes
+        annotations:
+          linkerd.io/inject: enabled
+      spec:
+        containers:
+        - name: grpc-and-kubernetes-container
+          image: bradfordhamilton/grpc-and-kubernetes
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 1337
