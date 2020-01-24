@@ -55,6 +55,8 @@ func main() {
 	listener, err := net.ListenTCP("tcp", tcpAddr)
 	handleErrors(err)
 
+	fmt.Printf("Listening on port 1337")
+
 	// Loop forever listening for connections to our rpc service
 	for {
 		conn, err := listener.Accept()
